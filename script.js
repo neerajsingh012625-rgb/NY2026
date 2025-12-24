@@ -8,13 +8,12 @@ const text = document.getElementById("text");
 const music = document.getElementById("music");
 
 const slides = [
-  {photo:"photo1.jpg", text:"You are amazing 💖"},
-  {photo:"photo2.jpg", text:"Keep smiling always 😊"},
-  {photo:"photo3.jpg", text:"This year is yours ✨"}
+  { photo: "photo1.jpg", text: "You are amazing 💖" },
+  { photo: "photo2.jpg", text: "Keep smiling always 😊" },
+  { photo: "photo3.jpg", text: "This year is yours ✨" }
 ];
 
 let count = 10;
-let idx = 0;
 
 startBtn.onclick = () => {
   startBtn.style.display = "none";
@@ -34,25 +33,46 @@ function startCountdown() {
       wish.classList.remove("hidden");
       gifts.classList.remove("hidden");
 
-      startGifts();
       startFireworks();
       startRoses();
       startShapes();
+      startGiftsSequential();
     }
   }, 1000);
 }
 
-function startGifts() {
-  setInterval(() => {
-    if (idx >= slides.length) return;
-    reveal.classList.remove("hidden");
-    photo.src = slides[idx].photo;
-    text.textContent = slides[idx].text;
-    idx++;
-  }, 5000);
+function startGiftsSequential() {
+  const giftEls = document.querySelectorAll(".gift");
+
+  function openGift(i) {
+    if (i >= slides.length) return;
+
+    const gift = giftEls[i];
+    gift.style.display = "block";
+
+    setTimeout(() => {
+      gift.classList.add("open");
+
+      photo.src = slides[i].photo;
+      text.textContent = slides[i].text;
+      reveal.classList.remove("hidden");
+      reveal.classList.remove("hide");
+
+      setTimeout(() => {
+        reveal.classList.add("hide");
+
+        setTimeout(() => {
+          openGift(i + 1);
+        }, 1000);
+
+      }, 3000);
+    }, 800);
+  }
+
+  openGift(0);
 }
 
-// Fireworks
+// 🎆 Fireworks
 function startFireworks() {
   const c = document.getElementById("fireworks");
   const ctx = c.getContext("2d");
@@ -68,7 +88,7 @@ function startFireworks() {
   })();
 }
 
-// Rose rain
+// 🌹 Roses
 function startRoses() {
   const container = document.getElementById("roses");
   setInterval(()=>{
@@ -81,7 +101,7 @@ function startRoses() {
   },500);
 }
 
-// Floating shapes
+// 🔵🟣🟢 Floating shapes
 function startShapes() {
   const cont = document.getElementById("shapes");
   setInterval(()=>{
@@ -95,3 +115,4 @@ function startShapes() {
     setTimeout(()=>d.remove(),20000);
   },400);
 }
+
