@@ -33,6 +33,7 @@ function startCountdown() {
       slideshow.classList.remove("hidden");
       startSlideshow();
       startFireworks();
+      startRoses();   // 🌹 ADD HERE
     }
   }, 1000);
 }
@@ -44,13 +45,14 @@ function startSlideshow() {
   setInterval(() => {
     index = (index + 1) % slides.length;
     slide.style.animation = "none";
-    slide.offsetHeight; // reflow
+    slide.offsetHeight;
     slide.style.animation = "slideUp 1s ease forwards";
     slide.src = slides[index].photo;
     caption.textContent = slides[index].text;
   }, 5000);
 }
 
+// 🎆 Fireworks
 function startFireworks() {
   const c = document.getElementById("fireworks");
   const ctx = c.getContext("2d");
@@ -85,3 +87,20 @@ function startFireworks() {
   })();
 }
 
+// 🌹 Rose Rain
+function startRoses() {
+  const body = document.body;
+
+  setInterval(() => {
+    const rose = document.createElement("div");
+    rose.textContent = "🌹";
+    rose.style.position = "absolute";
+    rose.style.left = Math.random() * 100 + "vw";
+    rose.style.top = "-40px";
+    rose.style.fontSize = "30px";
+    rose.style.animation = "fall 8s linear forwards";
+    body.appendChild(rose);
+
+    setTimeout(() => rose.remove(), 8000);
+  }, 500);
+}
