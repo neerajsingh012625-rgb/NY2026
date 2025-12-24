@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  background: radial-gradient(circle at top, #020024, #090979, #000);
+  overflow: hidden;
+  font-family: system-ui, sans-serif;
+  color: white;
+}
+
+#overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#countdown {
+  font-size: 120px;
+  font-weight: bold;
+  color: gold;
+  text-shadow: 0 0 20px orange;
+  animation: pulse 1s infinite;
+}
+
+#wish {
+  font-size: 80px;
+  text-align: center;
+  color: gold;
+  text-shadow: 0 0 25px orange;
+  animation: zoom 2s ease forwards;
+}
+
+#wish span {
+  font-size: 50px;
+}
+
+#slideshow img {
+  width: 260px;
+  border-radius: 20px;
+  box-shadow: 0 0 25px hotpink;
+}
+
+#caption {
+  margin-top: 10px;
+  font-size: 24px;
+  text-align: center;
+}
+
+.hidden { display: none; }
+
+@keyframes pulse {
+  50% { transform: scale(1.1); }
+}
+
+@keyframes zoom {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
