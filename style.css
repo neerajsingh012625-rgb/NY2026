@@ -20,7 +20,6 @@ body {
   font-weight: bold;
   color: gold;
   text-shadow: 0 0 20px orange;
-  animation: pulse 1s infinite;
 }
 
 #wish {
@@ -28,34 +27,53 @@ body {
   text-align: center;
   color: gold;
   text-shadow: 0 0 25px orange;
-  animation: zoom 2s ease forwards;
 }
 
-#wish span {
-  font-size: 50px;
+#wish span { font-size: 50px; }
+
+#photo-box {
+  width: 280px;
+  height: 200px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 0 20px hotpink;
 }
 
 #slideshow img {
   width: 260px;
-  border-radius: 20px;
-  box-shadow: 0 0 25px hotpink;
+  border-radius: 15px;
+  transform: translateY(100%);
+  animation: slideUp 1s ease forwards;
 }
 
 #caption {
   margin-top: 10px;
-  font-size: 24px;
+  font-size: 26px;
   text-align: center;
+  color: hotpink;
+  text-shadow: 0 0 10px pink;
 }
 
 .hidden { display: none; }
 
-@keyframes pulse {
-  50% { transform: scale(1.1); }
+#startBtn {
+  position: absolute;
+  bottom: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: none;
+  background: gold;
+  cursor: pointer;
 }
 
-@keyframes zoom {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
 }
 
 canvas {
@@ -63,3 +81,4 @@ canvas {
   inset: 0;
   pointer-events: none;
 }
+
