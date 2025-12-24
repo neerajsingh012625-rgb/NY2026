@@ -11,7 +11,7 @@ const finalMessage = document.getElementById("final-message");
 const slides = [
   { photo: "photo1.jpg", text: "You are amazing 💖" },
   { photo: "photo2.jpg", text: "Keep smiling always 😊" },
-  { photo: "photo3.jpg", text: "This year is yours ✨" }
+  { photo: "photo3.jpg", text: "This year is ours ✨" }
 ];
 
 let count = 10;
@@ -71,10 +71,10 @@ function startGiftsSequential() {
         reveal.classList.add("hide");
 
         if (i === slides.length - 1) {
-          // After 3rd gift
+          // last gift finished
           setTimeout(() => {
             finalMessage.classList.remove("hidden");
-          }, 1000);
+          }, 1200);
         } else {
           setTimeout(() => openGift(i + 1), 1000);
         }
