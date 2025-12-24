@@ -82,14 +82,14 @@ function startGiftsSequential() {
   openGift(0);
 }
 
-// 🎆 Heart fireworks
+// ❤️ Static heart
 function startFireworks() {
   const c = document.getElementById("fireworks");
   const ctx = c.getContext("2d");
   c.width = innerWidth;
   c.height = innerHeight;
 
-  let particles = [];
+  ctx.clearRect(0,0,c.width,c.height);
 
   function heart(t) {
     return {
@@ -98,33 +98,17 @@ function startFireworks() {
     };
   }
 
-  function burst() {
-    for (let i = 0; i < 200; i++) {
-      const t = Math.random() * Math.PI * 2;
-      const h = heart(t);
-      particles.push({
-        x: c.width / 2 + h.x * 15,
-        y: c.height / 2 + h.y * 15,
-        vx: (Math.random() - 0.5) * 1.5,
-        vy: (Math.random() - 0.5) * 1.5,
-        life: 120
-      });
-    }
+  ctx.beginPath();
+  for (let t = 0; t <= Math.PI * 2; t += 0.01) {
+    const h = heart(t);
+    const x = c.width / 2 + h.x * 15;
+    const y = c.height / 2 + h.y * 15;
+    if (t === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
   }
-
-  (function anim() {
-    ctx.clearRect(0,0,c.width,c.height);
-    particles.forEach((p,i)=>{
-      ctx.fillStyle = "hotpink";
-      ctx.fillRect(p.x,p.y,3,3);
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life--;
-      if(p.life<=0) particles.splice(i,1);
-    });
-    if(particles.length < 300) burst();
-    requestAnimationFrame(anim);
-  })();
+  ctx.strokeStyle = "hotpink";
+  ctx.lineWidth = 3;
+  ctx.stroke();
 }
 
 // 🌹 Roses
