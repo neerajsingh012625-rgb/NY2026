@@ -6,11 +6,12 @@ const reveal = document.getElementById("reveal");
 const photo = document.getElementById("photo");
 const text = document.getElementById("text");
 const music = document.getElementById("music");
+const finalMessage = document.getElementById("final-message");
 
 const slides = [
   { photo: "photo1.jpg", text: "You are amazing 💖" },
   { photo: "photo2.jpg", text: "Keep smiling always 😊" },
-  { photo: "photo3.jpg", text: "This year is ours ✨" }
+  { photo: "photo3.jpg", text: "This year is yours ✨" }
 ];
 
 let count = 10;
@@ -54,12 +55,7 @@ function startGiftsSequential() {
   const giftEls = document.querySelectorAll(".gift");
 
   function openGift(i) {
-    if (i >= slides.length) {
-      setTimeout(() => {
-        document.getElementById("final-message").classList.remove("hidden");
-      }, 1500);
-      return;
-    }
+    if (i >= slides.length) return;
 
     const gift = giftEls[i];
 
@@ -73,7 +69,16 @@ function startGiftsSequential() {
 
       setTimeout(() => {
         reveal.classList.add("hide");
-        setTimeout(() => openGift(i + 1), 1000);
+
+        if (i === slides.length - 1) {
+          // After 3rd gift
+          setTimeout(() => {
+            finalMessage.classList.remove("hidden");
+          }, 1000);
+        } else {
+          setTimeout(() => openGift(i + 1), 1000);
+        }
+
       }, 3000);
 
     }, 800);
