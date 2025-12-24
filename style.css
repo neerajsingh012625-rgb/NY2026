@@ -6,6 +6,8 @@ body {
   color: white;
 }
 
+.hidden { display: none !important; }
+
 #startBtn {
   position: absolute;
   bottom: 20px;
@@ -80,8 +82,6 @@ body {
   text-shadow: 0 0 10px pink;
 }
 
-.hidden { display: none; }
-
 #reveal.hide {
   opacity: 0;
   transition: opacity 1s ease;
@@ -99,7 +99,7 @@ body {
   color: hotpink;
   text-shadow: 0 0 20px pink, 0 0 40px red;
   animation: wishZoom 2s ease forwards;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.4);
   z-index: 5;
 }
 
@@ -137,4 +137,3 @@ body {
 }
 
 canvas { position:absolute; inset:0; pointer-events:none; }
-
