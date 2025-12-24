@@ -2,11 +2,21 @@ body {
   margin: 0;
   background: radial-gradient(circle at top, #020024, #090979, #000);
   overflow: hidden;
-  font-family: system-ui, sans-serif;
+  font-family: system-ui;
   color: white;
 }
 
-#overlay {
+#countdown {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 100px;
+  color: gold;
+  text-shadow: 0 0 20px orange;
+}
+
+#center {
   position: absolute;
   inset: 0;
   display: flex;
@@ -15,70 +25,67 @@ body {
   justify-content: center;
 }
 
-#countdown {
-  font-size: 120px;
-  font-weight: bold;
-  color: gold;
-  text-shadow: 0 0 20px orange;
-}
-
 #wish {
   font-size: 80px;
   text-align: center;
   color: gold;
   text-shadow: 0 0 25px orange;
+  margin-bottom: 20px;
 }
 
 #wish span { font-size: 50px; }
 
-#photo-box {
-  width: 280px;
-  height: 200px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.05);
+#gifts {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  box-shadow: 0 0 20px hotpink;
+  gap: 30px;
 }
 
-#slideshow img {
-  width: 260px;
+.gift img {
+  width: 100px;
+}
+
+#reveal img {
+  width: 250px;
   border-radius: 15px;
-  transform: translateY(100%);
+  box-shadow: 0 0 20px hotpink;
   animation: slideUp 1s ease forwards;
 }
 
-#caption {
+#text {
+  font-size: 24px;
   margin-top: 10px;
-  font-size: 26px;
-  text-align: center;
   color: hotpink;
   text-shadow: 0 0 10px pink;
 }
 
 .hidden { display: none; }
 
-#startBtn {
+#roses span {
   position: absolute;
-  bottom: 20px;
-  padding: 10px 20px;
-  font-size: 18px;
-  border-radius: 20px;
-  border: none;
-  background: gold;
-  cursor: pointer;
+  top: -50px;
+  font-size: 30px;
+  animation: fall linear forwards;
+}
+
+#shapes div {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: float linear infinite;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh); }
 }
 
 @keyframes slideUp {
   from { transform: translateY(100%); opacity: 0; }
-  to   { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-canvas {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
+@keyframes float {
+  from { transform: translateY(100vh); }
+  to { transform: translateY(-100px); }
 }
 
+canvas { position:absolute; inset:0; pointer-events:none; }
