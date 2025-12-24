@@ -1,34 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy New Year</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <canvas id="fireworks"></canvas>
+<div id="shapes"></div>
+<div id="roses"></div>
 
-<div id="overlay">
-  <div id="countdown">10</div>
+<div id="countdown">10</div>
 
+<div id="center">
   <div id="wish" class="hidden">
     Happy New Year<br><span>Anushka ✨</span>
   </div>
 
-  <div id="slideshow" class="hidden">
-    <div id="photo-box">
-      <img id="slide">
-    </div>
-    <p id="caption"></p>
+  <div id="gifts" class="hidden">
+    <div class="gift"><img src="gift.png"></div>
+    <div class="gift"><img src="gift.png"></div>
+    <div class="gift"><img src="gift.png"></div>
+  </div>
+
+  <div id="reveal" class="hidden">
+    <img id="photo">
+    <p id="text"></p>
   </div>
 </div>
 
-<button id="startBtn">Tap to Start 🎶</button>
-
 <audio id="music" src="music.mp3"></audio>
 <script src="script.js"></script>
-
 </body>
 </html>
