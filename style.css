@@ -88,12 +88,19 @@ body {
 }
 
 #final-message {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   font-size: 60px;
   text-align: center;
   color: hotpink;
   text-shadow: 0 0 20px pink, 0 0 40px red;
   animation: wishZoom 2s ease forwards;
-  margin-top: 20px;
+  background: rgba(0,0,0,0.3);
+  z-index: 5;
 }
 
 #roses span {
