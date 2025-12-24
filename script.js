@@ -1,3 +1,4 @@
+const startBtn = document.getElementById("startBtn");
 const cd = document.getElementById("countdown");
 const wish = document.getElementById("wish");
 const gifts = document.getElementById("gifts");
@@ -15,23 +16,31 @@ const slides = [
 let count = 10;
 let idx = 0;
 
-const timer = setInterval(() => {
-  cd.textContent = count;
-  count--;
+startBtn.onclick = () => {
+  startBtn.style.display = "none";
+  cd.classList.remove("hidden");
+  music.play().catch(()=>{});
+  startCountdown();
+};
 
-  if (count < 0) {
-    clearInterval(timer);
-    cd.style.display = "none";
-    wish.classList.remove("hidden");
-    gifts.classList.remove("hidden");
-    music.play().catch(()=>{});
+function startCountdown() {
+  const timer = setInterval(() => {
+    cd.textContent = count;
+    count--;
 
-    startGifts();
-    startFireworks();
-    startRoses();
-    startShapes();
-  }
-}, 1000);
+    if (count < 0) {
+      clearInterval(timer);
+      cd.style.display = "none";
+      wish.classList.remove("hidden");
+      gifts.classList.remove("hidden");
+
+      startGifts();
+      startFireworks();
+      startRoses();
+      startShapes();
+    }
+  }, 1000);
+}
 
 function startGifts() {
   setInterval(() => {
@@ -43,14 +52,14 @@ function startGifts() {
   }, 5000);
 }
 
-// Fireworks same as before
+// Fireworks
 function startFireworks() {
   const c = document.getElementById("fireworks");
   const ctx = c.getContext("2d");
   c.width = innerWidth;
   c.height = innerHeight;
-  let p = [];
-  function burst(){ for(let i=0;i<120;i++)p.push({x:Math.random()*c.width,y:Math.random()*c.height/2,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6,l:100}); }
+  let p=[];
+  function burst(){for(let i=0;i<120;i++)p.push({x:Math.random()*c.width,y:Math.random()*c.height/2,vx:(Math.random()-0.5)*6,vy:(Math.random()-0.5)*6,l:100});}
   (function anim(){
     ctx.clearRect(0,0,c.width,c.height);
     p.forEach((o,i)=>{ctx.fillStyle="gold";ctx.fillRect(o.x,o.y,3,3);o.x+=o.vx;o.y+=o.vy;o.l--;if(o.l<=0)p.splice(i,1);});
