@@ -6,6 +6,20 @@ body {
   color: white;
 }
 
+#startBtn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 25px;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  background: gold;
+  cursor: pointer;
+  z-index: 10;
+}
+
 #countdown {
   position: absolute;
   top: 20px;
@@ -40,8 +54,9 @@ body {
   gap: 30px;
 }
 
-.gift img {
-  width: 100px;
+.gift {
+  font-size: 80px;
+  animation: pulse 1.5s infinite;
 }
 
 #reveal img {
@@ -86,6 +101,10 @@ body {
 @keyframes float {
   from { transform: translateY(100vh); }
   to { transform: translateY(-100px); }
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.1); }
 }
 
 canvas { position:absolute; inset:0; pointer-events:none; }
