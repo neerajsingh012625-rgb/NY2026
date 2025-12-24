@@ -1,3 +1,4 @@
+const startBtn = document.getElementById("startBtn");
 const countdown = document.getElementById("countdown");
 const wish = document.getElementById("wish");
 const slideshow = document.getElementById("slideshow");
@@ -14,21 +15,27 @@ const slides = [
   { photo: "photo3.jpg", text: "This year is ours ✨" }
 ];
 
-const timer = setInterval(() => {
-  countdown.textContent = count;
-  count--;
+startBtn.onclick = () => {
+  startBtn.style.display = "none";
+  music.play().catch(()=>{});
+  startCountdown();
+};
 
-  if (count < 0) {
-    clearInterval(timer);
-    countdown.classList.add("hidden");
-    wish.classList.remove("hidden");
-    slideshow.classList.remove("hidden");
-    music.play().catch(()=>{});
+function startCountdown() {
+  const timer = setInterval(() => {
+    countdown.textContent = count;
+    count--;
 
-    startSlideshow();
-    startFireworks();
-  }
-}, 1000);
+    if (count < 0) {
+      clearInterval(timer);
+      countdown.classList.add("hidden");
+      wish.classList.remove("hidden");
+      slideshow.classList.remove("hidden");
+      startSlideshow();
+      startFireworks();
+    }
+  }, 1000);
+}
 
 function startSlideshow() {
   slide.src = slides[0].photo;
@@ -36,6 +43,9 @@ function startSlideshow() {
 
   setInterval(() => {
     index = (index + 1) % slides.length;
+    slide.style.animation = "none";
+    slide.offsetHeight; // reflow
+    slide.style.animation = "slideUp 1s ease forwards";
     slide.src = slides[index].photo;
     caption.textContent = slides[index].text;
   }, 5000);
@@ -46,7 +56,6 @@ function startFireworks() {
   const ctx = c.getContext("2d");
   c.width = innerWidth;
   c.height = innerHeight;
-
   let p = [];
 
   function burst() {
@@ -75,3 +84,4 @@ function startFireworks() {
     requestAnimationFrame(anim);
   })();
 }
+
